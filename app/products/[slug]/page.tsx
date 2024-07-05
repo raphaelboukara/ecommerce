@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { Card } from '@/components/ui/card';
@@ -30,7 +29,7 @@ export default async function ProductPage({
   }
 
   return (
-    <div className="p-2 md:p-6 flex flex-col md:flex-row gap-2 md:gap-6 md:items-start">
+    <div className="flex flex-col md:flex-row gap-2 md:gap-6 md:items-start">
       <Card className="w-full md:w-1/2 overflow-hidden">
         <Carousel>
           <CarouselContent>

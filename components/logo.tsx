@@ -89,10 +89,10 @@ function LogoWhite() {
 export function Logo() {
   return (
     <div className="relative">
-      <div className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0">
+      <div className="rotate-0 scale-100 transition-all -mr-[100px] dark:-rotate-90 dark:scale-0">
         <LogoBlack />
       </div>
-      <div className="absolute top-0 left-0 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100">
+      <div className="absolute top-0 left-0 rotate-90 scale-0 -mr-[100px] transition-all dark:rotate-0 dark:scale-100">
         <LogoWhite />
       </div>
     </div>

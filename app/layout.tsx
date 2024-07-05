@@ -34,13 +34,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   const className = cn(
-    'bg-background text-foreground font-sans antialiased',
+    'bg-background text-foreground font-sans antialiased flex flex-col min-h-svh',
     fontSans.variable
   );
 
@@ -55,7 +55,7 @@ export default async function RootLayout({
         >
           <StoreProvider>
             <Header />
-            {children}
+            <div className="flex flex-1 p-2 md:p-6">{children}</div>
             <Footer />
           </StoreProvider>
         </ThemeProvider>

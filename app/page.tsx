@@ -9,7 +9,7 @@ export default async function RootPage() {
   const products = await getProducts();
 
   return (
-    <ul className="p-2 md:p-6 grid grid-flow-row gap-2 md:gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+    <ul className="grid grid-flow-row gap-2 md:gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
       {products.map((product) => (
         <li
           className="group aspect-square animate-fadeIn cursor-pointer"

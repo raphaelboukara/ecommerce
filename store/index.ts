@@ -1,4 +1,9 @@
-import { PayloadAction, configureStore, createSlice, nanoid } from '@reduxjs/toolkit';
+import {
+  PayloadAction,
+  configureStore,
+  createSlice,
+  nanoid,
+} from '@reduxjs/toolkit';
 import { shallowEqual, useSelector } from 'react-redux';
 import type { CartItem, Cart, Product } from '@/api/types';
 
@@ -43,7 +48,8 @@ export type StoreType = ReturnType<typeof createStore>;
 export type RootState = ReturnType<StoreType['getState']>;
 export type AppDispatch = StoreType['dispatch'];
 
-export const { addProductToCart, addItemToCart, removeItemFromCart } = cartSlice.actions;
+export const { addProductToCart, addItemToCart, removeItemFromCart } =
+  cartSlice.actions;
 
 export const useCartItems = () =>
   useSelector((state: RootState) => Object.values(state.cart), shallowEqual);

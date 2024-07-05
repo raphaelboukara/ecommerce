@@ -14,7 +14,9 @@ export function CartFooter() {
         </div>
         <Separator />
       </div>
-      <Button>Passer la commande</Button>
+      <Button asChild>
+        <a href="/payments">Passer la commande</a>
+      </Button>
     </div>
   );
 }
