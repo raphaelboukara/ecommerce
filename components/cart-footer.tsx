@@ -2,7 +2,11 @@ import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import { CartTotal } from './cart-total';
 
-export function CartFooter() {
+type CartFooterProps = {
+  withSubmit?: boolean;
+};
+
+export function CartFooter({ withSubmit = true }: CartFooterProps) {
   return (
     <div className="flex flex-col space-y-2 md:space-y-6">
       <div className="flex flex-col space-y-2">
@@ -14,9 +18,11 @@ export function CartFooter() {
         </div>
         <Separator />
       </div>
-      <Button asChild>
-        <a href="/payments">Passer la commande</a>
-      </Button>
+      {withSubmit && (
+        <Button asChild>
+          <a href="/payments">Passer la commande</a>
+        </Button>
+      )}
     </div>
   );
 }

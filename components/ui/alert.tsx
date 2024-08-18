@@ -3,6 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import {
   ExclamationTriangleIcon,
   CheckCircledIcon,
+  ChatBubbleIcon,
 } from '@radix-ui/react-icons';
 
 import { cn } from '@/lib/utils';
@@ -60,13 +61,40 @@ const AlertDescription = React.forwardRef<
 ));
 AlertDescription.displayName = 'AlertDescription';
 
-const Error = ({ message }: { message?: string }) => {
+const Note = ({
+  message,
+  className,
+}: {
+  message?: string;
+  className?: string;
+}) => {
   if (!message) {
     return null;
   }
 
   return (
-    <Alert variant="destructive">
+    <Alert variant="default" className={cn(className)}>
+      <ChatBubbleIcon className="h-4 w-4" />
+      <AlertTitle>Notification</AlertTitle>
+      <AlertDescription>{message}</AlertDescription>
+    </Alert>
+  );
+};
+Note.displayName = 'AlertNote';
+
+const Error = ({
+  message,
+  className,
+}: {
+  message?: string;
+  className?: string;
+}) => {
+  if (!message) {
+    return null;
+  }
+
+  return (
+    <Alert variant="destructive" className={cn(className)}>
       <ExclamationTriangleIcon className="h-4 w-4" />
       <AlertTitle>Oups!</AlertTitle>
       <AlertDescription>{message}</AlertDescription>
@@ -75,13 +103,19 @@ const Error = ({ message }: { message?: string }) => {
 };
 Error.displayName = 'AlertError';
 
-const Success = ({ message }: { message?: string }) => {
+const Success = ({
+  message,
+  className,
+}: {
+  message?: string;
+  className?: string;
+}) => {
   if (!message) {
     return null;
   }
 
   return (
-    <Alert>
+    <Alert className={cn(className)}>
       <CheckCircledIcon className="h-4 w-4" />
       <AlertTitle>Notification</AlertTitle>
       <AlertDescription>{message}</AlertDescription>
@@ -90,4 +124,4 @@ const Success = ({ message }: { message?: string }) => {
 };
 Success.displayName = 'AlertSuccess';
 
-export { Alert, AlertTitle, AlertDescription, Error, Success };
+export { Alert, AlertTitle, AlertDescription, Error, Success, Note };

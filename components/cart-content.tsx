@@ -8,7 +8,11 @@ import { Button } from '@/components/ui/button';
 import { formatPrice } from '@/lib/utils';
 import { useCartItems, removeItemFromCart, addItemToCart } from '@/store';
 
-export function CartContent() {
+export function CartContent({
+  isImmutable = false,
+}: {
+  isImmutable?: boolean;
+}) {
   const dispatch = useDispatch();
   const cartItems = useCartItems();
 
@@ -39,16 +43,18 @@ export function CartContent() {
                 {formatPrice(cartItem.price)}
               </p>
             </Link>
-            <div className="flex items-center space-x-1">
-              <Button
-                variant="outline"
-                size="icon"
-                className="h-6 w-6"
-                onClick={() => dispatch(removeItemFromCart(cartItem.id))}
-              >
-                <Trash className="h-4 w-4" />
-              </Button>
-            </div>
+            {!isImmutable && (
+              <div className="flex items-center space-x-1">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  className="h-6 w-6"
+                  onClick={() => dispatch(removeItemFromCart(cartItem.id))}
+                >
+                  <Trash className="h-4 w-4" />
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       ))}

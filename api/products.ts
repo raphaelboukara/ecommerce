@@ -1,8 +1,9 @@
+import { stripe } from '@/lib/stripe';
 import { Product } from './types';
 
-const products: Product[] = [
+const internalProducts: Product[] = [
   {
-    id: 1,
+    id: '1',
     slug: 'carafe_a_vin_sophistiquee_en_verre',
     images: [
       '/images/carafe_a_vin_sophistiquee_en_verre/1.jpg',
@@ -10,7 +11,7 @@ const products: Product[] = [
       '/images/carafe_a_vin_sophistiquee_en_verre/3.png',
     ],
     name: 'Carafe à Vin Sophistiquée en Verre',
-    price: 289.9,
+    price: 28990,
     keywords: ['alcool', 'vin', 'carafe'],
     description: `
 Découvrez l'élégance intemporelle de notre carafe à vin sophistiquée en verre, conçue pour sublimer votre expérience de dégustation. Alliant esthétique et fonctionnalité, cette carafe est le complément parfait pour les amateurs de vin et les connaisseurs exigeants.
@@ -34,7 +35,7 @@ Offrez-vous ou à vos proches une expérience de dégustation incomparable avec 
     `,
   },
   {
-    id: 2,
+    id: '2',
     slug: 'boule_de_billard_authentique',
     images: [
       '/images/boule_de_billard_authentique/1.jpg',
@@ -45,7 +46,7 @@ Offrez-vous ou à vos proches une expérience de dégustation incomparable avec 
       '/images/boule_de_billard_authentique/6.jpg',
     ],
     name: 'Boule de Billard Authentique',
-    price: 379.9,
+    price: 37990,
     keywords: ['jeux', 'billard', 'boule', 'pont', 'craies'],
     description: `
 Découvrez l'authenticité et la qualité avec nos boules de billard véritable, un élément essentiel pour tout amateur de billard. Fabriquée à partir de résine de haute qualité, cette boule offre une précision de jeu optimale et une durabilité exceptionnelle.
@@ -67,9 +68,54 @@ Que ce soit pour remplacer une boule de billard usée ou pour améliorer votre e
 Profitez de notre pont pour queue de billard et de nos craies pour queue de billard offert avec l’article.
     `,
   },
+  {
+    id: '3',
+    slug: 'test',
+    images: [
+      '/images/test/1.png',
+      '/images/test/2.webp',
+      '/images/test/3.png',
+    ],
+    name: 'Magnifique Test',
+    price: 100,
+    keywords: ['test'],
+    description: `
+Découvrez l'élégance intemporelle de notre test.
+
+### Caractéristiques
+- Matériau: Test de haute qualité.
+
+### Avantages
+- Prix Dérisoire: Un tarif surprenant.
+    `,
+  }
 ];
 
-export const getProducts = async (): Promise<Product[]> => products;
+export const getProducts = async (): Promise<Product[]> => {
+  const stripeProducts: Product[] = [];
+
+  const { data } = await stripe.products.list();
+  for (const product of data) {
+    stripeProducts.push({
+      id: product.id,
+      slug: product.metadata.slug,
+      images: product.metadata.images
+        .split(',')
+        .map((imageName) => `/images/${product.metadata.slug}/${imageName}`),
+      name: product.metadata.name,
+      keywords: [],
+      price: parseInt(product.metadata.price, 10),
+      description: product.metadata.description
+    })
+  }
+
+  const products = [
+    ...internalProducts,
+    ...stripeProducts
+  ];
+
+  return products;
+};
 
 export const getProductBySlug = async (
   slug: string
