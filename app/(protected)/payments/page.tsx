@@ -1,9 +1,10 @@
 import React from 'react';
+import { Payment } from '@/components/payment';
 
 export default async function PaymentsPage() {
   return (
-    <div className="flex flex-col gap-2">
-      <h2 className="text-3xl font-semibold">Payments Page</h2>
+    <div className="grid grid-flow-row gap-6 grid-cols-1 md:grid-cols-3">
+      <Payment />
     </div>
   );
 }

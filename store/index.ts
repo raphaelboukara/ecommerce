@@ -22,6 +22,7 @@ export const cartSlice = createSlice({
         slug: payload.slug,
         image: payload.images[0],
         price: payload.price,
+        productId: payload.id
       };
 
       localStorage.setItem('kdal', JSON.stringify(Object.values(state)));

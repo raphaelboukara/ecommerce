@@ -1,5 +1,5 @@
 export interface Product {
-  id: number;
+  id: string;
   slug: string;
   images: string[];
   name: string;
@@ -14,6 +14,7 @@ export interface CartItem {
   name: string;
   image: string;
   price: number;
+  productId: string;
 }
 
 export type Cart = {
