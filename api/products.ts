@@ -88,6 +88,29 @@ Découvrez l'élégance intemporelle de notre test.
 ### Avantages
 - Prix Dérisoire: Un tarif surprenant.
     `,
+  },
+  {
+    id: '4',
+    slug: 'lunettes_de_ski_magnetiques',
+    images: [
+      '/images/lunettes_de_ski_magnetiques/1.png',
+      '/images/lunettes_de_ski_magnetiques/2.png',
+      '/images/lunettes_de_ski_magnetiques/3.png',
+    ],
+    name: 'Lunettes de Ski Magnétiques – 2024',
+    price: 2000,
+    keywords: ['ski'],
+    description: `
+Préparez-vous à affronter les pistes avec style et performance grâce à nos lunettes de ski à lentille magnétique. Ces lunettes allient innovation et confort pour vous offrir une expérience incomparable sur la neige.
+
+## Caractéristiques principales
+- **Lentille magnétique double couche** : Facile à changer, elle s'adapte rapidement aux conditions météorologiques changeantes.
+- **Lentille polarisée** : Réduction optimale des reflets pour une vision claire et précise.
+- **Traitement anti-buée** : Profitez d’une vision nette même lors des descentes les plus intenses.
+- **Design transparent et élégant** : Associez fonctionnalité et esthétique sur les pistes.
+
+Idéales pour les skieurs passionnés cherchant une protection et une visibilité maximales, ces lunettes sont l’accessoire indispensable pour la saison 2024. Découvrez la différence et dépassez vos limites avec notre modèle 506.
+    `,
   }
 ];
 
